@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Anshu ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+overflow-x:hidden;
+background-image:url("./background.jpeg");
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+background-attachment:fixed;
+color:white;
+text-align:center;
+min-height:100vh;
+animation:zoomBg 25s ease-in-out infinite alternate;
+}
+
+@keyframes zoomBg{
+from{background-size:100%;}
+to{background-size:110%;}
+}
+
+.overlay{
+background:rgba(0,0,0,0.55);
+min-height:100vh;
+padding:40px 20px;
+}
+
+h1{
+font-family:'Dancing Script',cursive;
+font-size:60px;
+margin-top:40px;
+}
+
+.subtitle{
+font-size:20px;
+margin-top:20px;
+}
+
+.btn{
+margin:15px;
+padding:12px 25px;
+border-radius:30px;
+border:none;
+cursor:pointer;
+font-weight:600;
+transition:0.3s;
+}
+
+.btn:hover{
+transform:scale(1.1);
+}
+
+#heartBox{
+margin-top:30px;
+display:none;
+font-size:18px;
+max-width:600px;
+margin-left:auto;
+margin-right:auto;
+}
+
+#questionBox{
+margin-top:40px;
+display:none;
+}
+
+#proposalSection{
+display:none;
+margin-top:50px;
+}
+
+.yesBtn{
+background:#ff4d6d;
+color:white;
+}
+
+.noBtn{
+background:#999;
+color:white;
+}
+
+#ringBox{
+margin-top:40px;
+font-size:30px;
+display:none;
+animation:pop 1s ease forwards;
+}
+
+@keyframes pop{
+0%{transform:scale(0);}
+100%{transform:scale(1);}
+}
+
+.fireworks{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+display:none;
+}
+
+.particle{
+position:fixed;
+width:4px;
+height:4px;
+background:white;
+border-radius:50%;
+animation:float 10s linear infinite;
+opacity:0.6;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh);}
+100%{transform:translateY(-10vh);}
+}
+
+#easter{
+position:fixed;
+bottom:10px;
+right:15px;
+font-size:12px;
+opacity:0.4;
+cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+
+<h2>Hi Bacchaa ❤️</h2>
+<h1>Happy Valentine's Day Princess 👑</h1>
+<p class="subtitle">I Loveeeeee Youuuuuu Sooooo Muchhh ❤️❤️❤️</p>
+
+<button class="btn" onclick="openHeart()">Open My Heart 💌</button>
+<button class="btn" onclick="openQuestion()">Special Question 💍</button>
+
+<div id="heartBox">
+<p>
+Jaaan!! I know we haven't celebrated any Valentines day together yet, but we will soon have that.
+I am here this time but still unable to meet you, be with you, be there for you.
+But you will have everything that you dream for and I hope to fulfil all your dreams and wishes.
+I loveee youu bohot saaraaa.
+</p>
+<p>Forever yours,<br><strong>Aksh ❤️</strong></p>
+</div>
+
+<div id="questionBox">
+<h2>Anshu ❤️ Aksh</h2>
+<p>Will you be mine forever?</p>
+<button class="btn yesBtn" onclick="sayYes()">YES 💖</button>
+<button class="btn noBtn" onclick="sayNo()">NO 🙄</button>
+</div>
+
+<div id="proposalSection">
+<div id="ringBox">💍 Mrs. Aksh ❤️</div>
+</div>
+
+</div>
+
+<canvas class="fireworks" id="fireworks"></canvas>
+
+<div id="easter" onclick="secret()">psst...</div>
+
+<audio id="bgMusic" loop>
+<source src="https://cdn.pixabay.com/audio/2022/03/15/audio_115b9b8c3d.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function openHeart(){
+document.getElementById("heartBox").style.display="block";
+}
+
+function openQuestion(){
+document.getElementById("questionBox").style.display="block";
+}
+
+function sayYes(){
+document.getElementById("proposalSection").style.display="block";
+document.getElementById("ringBox").style.display="block";
+startFireworks();
+heartbeat();
+fadeMusic();
+}
+
+function sayNo(){
+alert("Do you think you have this option after 3 years? 😌");
+}
+
+function heartbeat(){
+if(navigator.vibrate){
+navigator.vibrate([200,100,200]);
+}
+}
+
+function fadeMusic(){
+let music=document.getElementById("bgMusic");
+music.volume=0;
+music.play();
+let vol=0;
+let fade=setInterval(()=>{
+if(vol<0.5){
+vol+=0.02;
+music.volume=vol;
+}else{
+clearInterval(fade);
+}
+},200);
+}
+
+function startFireworks(){
+let canvas=document.getElementById("fireworks");
+canvas.style.display="block";
+let ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+for(let i=0;i<100;i++){
+let x=Math.random()*canvas.width;
+let y=Math.random()*canvas.height;
+ctx.fillStyle="hsl("+Math.random()*360+",100%,60%)";
+ctx.beginPath();
+ctx.arc(x,y,3,0,Math.PI*2);
+ctx.fill();
+}
+}
+
+function secret(){
+alert("You unlocked Final Boss Love Mode 💘\n\nAksh loves Anshu beyond infinity ♾️");
+}
+
+for(let i=0;i<40;i++){
+let p=document.createElement("div");
+p.className="particle";
+p.style.left=Math.random()*100+"vw";
+p.style.animationDuration=(5+Math.random()*10)+"s";
+document.body.appendChild(p);
+}
+</script>
+
+</body>
+</html>
