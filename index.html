@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,11 +17,8 @@ box-sizing:border-box;
 body{
 font-family:'Poppins',sans-serif;
 overflow-x:hidden;
-background-image:url("./background.jpeg");
+background:url("background.jpeg") no-repeat center center fixed;
 background-size:cover;
-background-position:center;
-background-repeat:no-repeat;
-background-attachment:fixed;
 color:white;
 text-align:center;
 min-height:100vh;
@@ -105,14 +102,11 @@ animation:pop 1s ease forwards;
 100%{transform:scale(1);}
 }
 
-.fireworks{
+canvas{
 position:fixed;
 top:0;
 left:0;
-width:100%;
-height:100%;
 pointer-events:none;
-display:none;
 }
 
 .particle{
@@ -175,13 +169,9 @@ I loveee youu bohot saaraaa.
 
 </div>
 
-<canvas class="fireworks" id="fireworks"></canvas>
+<canvas id="fireworks"></canvas>
 
 <div id="easter" onclick="secret()">psst...</div>
-
-<audio id="bgMusic" loop>
-<source src="https://cdn.pixabay.com/audio/2022/03/15/audio_115b9b8c3d.mp3" type="audio/mpeg">
-</audio>
 
 <script>
 function openHeart(){
@@ -196,43 +186,19 @@ function sayYes(){
 document.getElementById("proposalSection").style.display="block";
 document.getElementById("ringBox").style.display="block";
 startFireworks();
-heartbeat();
-fadeMusic();
 }
 
 function sayNo(){
 alert("Do you think you have this option after 3 years? 😌");
 }
 
-function heartbeat(){
-if(navigator.vibrate){
-navigator.vibrate([200,100,200]);
-}
-}
-
-function fadeMusic(){
-let music=document.getElementById("bgMusic");
-music.volume=0;
-music.play();
-let vol=0;
-let fade=setInterval(()=>{
-if(vol<0.5){
-vol+=0.02;
-music.volume=vol;
-}else{
-clearInterval(fade);
-}
-},200);
-}
-
 function startFireworks(){
-let canvas=document.getElementById("fireworks");
-canvas.style.display="block";
-let ctx=canvas.getContext("2d");
+const canvas=document.getElementById("fireworks");
+const ctx=canvas.getContext("2d");
 canvas.width=window.innerWidth;
 canvas.height=window.innerHeight;
 
-for(let i=0;i<100;i++){
+for(let i=0;i<120;i++){
 let x=Math.random()*canvas.width;
 let y=Math.random()*canvas.height;
 ctx.fillStyle="hsl("+Math.random()*360+",100%,60%)";
@@ -257,4 +223,3 @@ document.body.appendChild(p);
 
 </body>
 </html>
-
